@@ -1,0 +1,99 @@
+:root {
+	--main-bg-color: #f3767c;
+	--main-calc-color: #1e1c1f;
+	--topbar-bg-color: #130f10;
+	--num-button-color: #57595b;
+	--main-text-color: #fdfdfd;
+	--display-color: #a2af77;
+}
+::selection {
+    background-color: transparent;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--main-bg-color);
+}
+#container-calc {
+	background-color: var(--main-calc-color);
+
+	margin-top: 25%;
+	margin-right: 25%;
+	margin-left: 25%;
+
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: repeat(3, auto);
+
+    padding: 20px;
+    height: 600px;
+    width: 450px;
+	border-radius: 15px;
+}
+#display {
+	background-color: var(--display-color);
+	grid-row: 1 / 2;
+	grid-column: 1 / 2;
+	padding: 10px;
+	border-radius: 10px;
+    margin-bottom: 10px;
+    
+    text-align: end;
+    height: 90px;
+    font-size: 50px;
+    overflow: hidden;
+    
+}
+#total-equation {
+    font-size: 20px;
+
+}
+#current-number {
+    font-size: 50px;
+}
+
+/* CSS for Containers for the number buttons and operand buttons and classes of buttons. */
+.button {
+    /* I had to make each button a flex container to center the text regardless of size. I couldn't find another solution. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	margin: 5px;
+	width: 100px;
+	font-size: 40px;
+}
+
+.topnum {
+	background-color: var(--topbar-bg-color);
+    color: var(--main-text-color);
+    
+    margin-bottom: 40px;
+}
+
+#numpad {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
+    margin-top: 40px;
+    
+}
+.number {
+	background-color: var(--num-button-color);
+	color: var(--main-text-color);
+}
+#zero {
+	grid-column: 1 / 3;
+	width: auto;
+}
+
+#equals {
+	background-color: #f15a2b;
+	color: var(--main-text-color);
+	text-align: center;
+	font-size: 30px;
+	grid-row: 4 / 6;
+	grid-column: 4 / 5;
+}
+
+.pressed {
+    box-shadow: inset 0 0 10px #C84037;
+}
