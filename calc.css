@@ -7,10 +7,10 @@
 	--display-color: #a2af77;
 }
 ::selection {
-    background-color: transparent;
+	background-color: transparent;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	background-color: var(--main-bg-color);
 }
 #container-calc {
@@ -18,15 +18,15 @@ body {
 
 	margin-top: 10%;
 	margin-right: 25%;
-	margin-left: 25%;
+	margin-left: 35%;
 
 	display: grid;
 	grid-template-columns: auto;
 	grid-template-rows: repeat(3, auto);
 
-    padding: 20px;
-    height: 600px;
-    width: 450px;
+	padding: 20px;
+	height: 600px;
+	width: 450px;
 	border-radius: 15px;
 }
 #display {
@@ -35,28 +35,26 @@ body {
 	grid-column: 1 / 2;
 	padding: 10px;
 	border-radius: 10px;
-    margin-bottom: 10px;
-    
-    text-align: end;
-    height: 90px;
-    font-size: 50px;
-    overflow: hidden;
-    
+	margin-bottom: 10px;
+
+	text-align: end;
+	height: 90px;
+	font-size: 50px;
+	overflow: hidden;
 }
 #total-equation {
-    font-size: 20px;
-
+	font-size: 20px;
 }
 #current-number {
-    font-size: 50px;
+	font-size: 50px;
 }
 
 /* CSS for Containers for the number buttons and operand buttons and classes of buttons. */
 .button {
-    /* I had to make each button a flex container to center the text regardless of size. I couldn't find another solution. */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	/* I had to make each button a flex container to center the text regardless of size. I couldn't find another solution. */
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin: 5px;
 	width: 100px;
 	font-size: 40px;
@@ -64,17 +62,16 @@ body {
 
 .topnum {
 	background-color: var(--topbar-bg-color);
-    color: var(--main-text-color);
-    
-    margin-bottom: 40px;
+	color: var(--main-text-color);
+
+	margin-bottom: 40px;
 }
 
 #numpad {
 	display: grid;
 	grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(5, auto);
-    margin-top: 40px;
-    
+	grid-template-rows: repeat(5, auto);
+	margin-top: 40px;
 }
 .number {
 	background-color: var(--num-button-color);
@@ -95,5 +92,5 @@ body {
 }
 
 .pressed {
-    box-shadow: inset 0 0 10px #C84037;
+	box-shadow: inset 0 0 10px #c84037;
 }
