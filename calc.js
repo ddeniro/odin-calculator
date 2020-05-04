@@ -1,8 +1,8 @@
-
+//* Responsiveness.
 const add = (x, y) => parseFloat(x) + parseFloat(y);
 const subtract = (x,y) => parseFloat(x) - parseFloat(y);
 const multiply = (x, y) => parseFloat(x) * parseFloat(y);
-const divide = (x,y) => parseFloat(x) / parseFloat(y);
+const divide = (x,y) => parseFloat(y) === 0 ? 'ERROR' : parseFloat(x) / parseFloat(y);
 const operate = (operator, x, y) => operator(x,y);
 
 let clearBtn = document.getElementById('clear');
@@ -28,11 +28,12 @@ let zeroBtn = document.getElementById('zero');
 let pointBtn = document.getElementById('point');
 let equalsBtn = document.getElementById('equals');
 
-//all the buttons
 let totalDisplay = document.getElementById('total-equation');
 let currentDisplay = document.getElementById('current-number');
+
 let prevIsOperand = false;
 let decimalUsed = false;
+
 let x = undefined;
 let y = undefined;
 let infix = [];
@@ -45,11 +46,6 @@ numbers.forEach(number => {
         currentDisplay.innerText = currentDisplay.innerText + number.innerText;
         prevIsOperand = false;
     })
-})
-
-clearBtn.addEventListener('click', () => {
-    totalDisplay.textContent = '';
-    currentDisplay.textContent = '';
 })
 
 //Buttons that handle the logic for using operands.
@@ -130,7 +126,6 @@ const postfixEvaluate = (postfix) => {
             stack.push(element);
         }
         else {
-            console.log('operator:', element);
             let y = stack.pop();
             let x = stack.pop();
             switch (element) {
@@ -151,13 +146,10 @@ const postfixEvaluate = (postfix) => {
         }
         
     }
-    console.log(stack);
+    let result = Math.round(1000*stack[0] / 1000);
+    if (isNaN(result))
+        return 'Error: NaN';
     return Math.round(1000*stack[0]) / 1000;
-}
-const keys = [];
-const logKey = (e) => {
-    keys.push(e.key);
-    console.log(keys);
 }
 const addNumber = number => {
     totalDisplay.innerText = totalDisplay.innerText + number;
@@ -173,17 +165,19 @@ const addOperator = operator => {
             decimalUsed = false;
         }
 }
-const backspace = () => {
-    let text = currentDisplay.innerText;
-    text = text.slice(0, text.length - 1);
-    currentDisplay.innerText = text;
 
-    let totalText = totalDisplay.innerText;
-    totalText = totalText.slice(0, text.length - 1);
-    totalDisplay.innerText = text;
+const backspace = () => {
+    if (currentDisplay.innerText != '') {
+        let text = currentDisplay.innerText;
+        text = text.slice(0, text.length - 1);
+        currentDisplay.innerText = text;
+
+        let totalText = totalDisplay.innerText;
+        totalText = totalText.slice(0, totalText.length - 1);
+        totalDisplay.innerText = totalText;
+    }
 }
 const evaluate = () => {
-    console.log('infix:', infix);
     infix.push(currentDisplay.innerText);
     infix = infixToPostfix(infix);
     let postfix = postfixEvaluate(infix);
@@ -209,7 +203,6 @@ clearBtn.addEventListener('click', () => {
 pointBtn.addEventListener('click', addDecimal);
 equalsBtn.addEventListener('click', evaluate);
 deleteBtn.addEventListener('click', backspace);
-document.addEventListener('keydown', logKey);
 document.addEventListener('keydown', e => {
     if (e.key === '0') {
         addNumber(0);
@@ -247,8 +240,8 @@ document.addEventListener('keydown', e => {
     if (e.key === '+') {
         addOperator('+');
     }
-    if (e.key === '*') {
-        addOperator('×');
+    if (e.key === 'x' || e.key === 'X' || e.key === '*') {
+        addOperator('*');
     }
     if (e.key === '/') {
         addOperator('÷');

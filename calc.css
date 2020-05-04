@@ -37,7 +37,8 @@ body {
 	border-radius: 10px;
 	margin-bottom: 10px;
 
-	text-align: end;
+    text-align: end;
+    white-space: nowrap;
 	height: 90px;
 	font-size: 50px;
 	overflow: hidden;
