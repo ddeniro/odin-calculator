@@ -67,6 +67,7 @@ const isOperator = (char) =>{
         case '+':
         case '×':
         case '÷':
+        case '*':
             return true;
     }
     return false;
@@ -78,6 +79,7 @@ const getPrecedence = (operand) => {
             return 1;
         case '×':
         case '÷':
+        case '*':
             return 2;
     }
 }
@@ -135,6 +137,7 @@ const postfixEvaluate = (postfix) => {
                 case '-':
                     stack.push(operate(subtract, x, y));
                     break;
+                case '*':
                 case '×':
                     stack.push(operate(multiply, x, y));
                     break;
